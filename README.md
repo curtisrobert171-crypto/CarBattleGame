@@ -17,7 +17,7 @@ A mobile-friendly car battle game where you dodge enemy cars and survive as long
 - ✅ Mobile-responsive design with touch controls
 - ✅ Score tracking system
 - ✅ Lives/health system
-- ✅ Progressive difficulty (enemies get faster over time)
+- ✅ Randomized enemy speeds for variety
 - ✅ Animated road with moving lane markers
 - ✅ Collision detection
 - ✅ Game over screen with final score

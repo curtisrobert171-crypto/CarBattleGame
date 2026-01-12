@@ -25,7 +25,6 @@ let player;
 let enemies = [];
 let keys = {};
 let touchX = null;
-let lastFrameTime = 0;
 let gameLoopId = null;
 
 // Player Class
@@ -290,11 +289,8 @@ function drawRoad() {
     }
 }
 
-function gameLoop(currentTime = 0) {
+function gameLoop() {
     if (gameState !== GameState.PLAYING) return;
-
-    const deltaTime = currentTime - lastFrameTime;
-    lastFrameTime = currentTime;
 
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
