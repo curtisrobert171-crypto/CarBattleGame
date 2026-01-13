@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Car Battle Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="menu-screen" class="screen active">
+            <h1>🏎️ Car Battle Game</h1>
+            <p>Dodge enemy cars and survive as long as you can!</p>
+            <button id="start-button" class="btn">Start Game</button>
+            <div class="controls-info">
+                <p><strong>Desktop:</strong> Arrow keys or WASD to move</p>
+                <p><strong>Mobile:</strong> Touch anywhere to move your car</p>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div id="hud">
+                <div class="hud-item">Score: <span id="score">0</span></div>
+                <div class="hud-item">Lives: <span id="lives">3</span></div>
+            </div>
+            <canvas id="game-canvas"></canvas>
+            <div id="touch-controls">
+                <div class="touch-area" id="touch-left">←</div>
+                <div class="touch-area" id="touch-right">→</div>
+            </div>
+        </div>
+
+        <div id="game-over-screen" class="screen">
+            <h1>Game Over!</h1>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="restart-button" class="btn">Play Again</button>
+            <button id="menu-button" class="btn">Main Menu</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
