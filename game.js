@@ -286,7 +286,9 @@ const config = {
     maxEnemies: 5,
     carWidth: 40,
     carHeight: 60,
-    maxHealth: 100
+    maxHealth: 100,
+    enemyMaxHealth: 50,
+    collisionDamage: 20
 };
 
 // Game Variables
@@ -470,7 +472,7 @@ class Enemy {
         this.speed = config.enemySpeed + Math.random() * 2;
         this.color = '#ff0000';
         this.passed = false;
-        this.healthSystem = new HealthSystem(50);
+        this.healthSystem = new HealthSystem(config.enemyMaxHealth);
         this.healthSystem.start();
         this.weapon = new WeaponBase(5, 2.0);
         this.ai = null;
@@ -780,7 +782,7 @@ function gameLoop() {
 
         // Check collision with player
         if (player && !enemy.healthSystem.isDead && player.collidesWith(enemy)) {
-            player.healthSystem.takeDamage(20);
+            player.healthSystem.takeDamage(config.collisionDamage);
             enemy.healthSystem.takeDamage(enemy.healthSystem.maxHealth); // Destroy enemy on collision
             
             if (player.healthSystem.isDead) {
