@@ -22,6 +22,7 @@ class HealthSystem {
     takeDamage(amount) {
         if (this.isDead) return;
         this.currentHealth -= amount;
+        this.currentHealth = Math.max(0, this.currentHealth); // Clamp to 0
         this.updateHealth();
         if (this.currentHealth <= 0) this.die();
     }
@@ -176,9 +177,9 @@ class DeterministicBotAI {
             const dy = nextWeapon.y - enemy.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             
-            if (dist > 0.5) {
-                enemy.x += (dx / dist) * deltaTime * 50;
-                enemy.y += (dy / dist) * deltaTime * 50;
+            if (dist > config.aiTargetReachDistance) {
+                enemy.x += (dx / dist) * deltaTime * config.aiMoveSpeed;
+                enemy.y += (dy / dist) * deltaTime * config.aiMoveSpeed;
             } else {
                 this.currentTargetIndex++;
             }
@@ -288,7 +289,10 @@ const config = {
     carHeight: 60,
     maxHealth: 100,
     enemyMaxHealth: 50,
-    collisionDamage: 20
+    collisionDamage: 20,
+    aiEnemySpawnChance: 0.5,
+    aiTargetReachDistance: 0.5,
+    aiMoveSpeed: 50
 };
 
 // Game Variables
@@ -714,7 +718,7 @@ function spawnEnemy() {
         const enemy = new Enemy(x, -config.carHeight);
         
         // Set up AI for some enemies
-        if (Math.random() > 0.5) {
+        if (Math.random() > (1 - config.aiEnemySpawnChance)) {
             const weaponTargets = [];
             for (let i = 0; i < 3; i++) {
                 weaponTargets.push({
