@@ -87,10 +87,10 @@ class Entity {
 ## Mobile-First Approach
 
 ### Touch Controls
-- Always prevent default on touch events: `e.preventDefault()`
+- Always prevent default on touch events: `e.preventDefault();`
 - Use `{ passive: false }` option for touch listeners
 - Store touch position in global variable for use in game loop
-- Clear touch state on touchend: `touchX = null`
+- Clear touch state on touchend: `touchX = null;`
 - Support both direct touch on canvas and on-screen buttons
 
 ### Responsive Design
@@ -158,7 +158,7 @@ Since this is a client-side game with no build process:
 
 ## Common Pitfalls to Avoid
 - Don't forget to cancel animation frames to prevent memory leaks
-- Don't mix direct touch coordinates with canvas coordinates (use `getBoundingClientRect()`)
+- Don't mix direct touch coordinates with canvas coordinates (use `getBoundingClientRect()` to convert: `touchX = e.touches[0].clientX - rect.left;`)
 - Don't forget passive: false for touch events that need preventDefault
 - Don't update canvas size without checking mobile controls visibility
 - Don't create multiple game loops - always clean up previous
