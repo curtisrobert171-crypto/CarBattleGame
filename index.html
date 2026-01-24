@@ -22,8 +22,14 @@
 
         <div id="game-screen" class="screen">
             <div id="hud">
+                <div class="hud-item">
+                    <div class="hud-label">Health:</div>
+                    <div class="health-bar-container">
+                        <div id="health-bar-fill" class="health-bar-fill"></div>
+                    </div>
+                </div>
+                <div class="hud-item">Time: <span id="timer">3:00</span></div>
                 <div class="hud-item">Score: <span id="score">0</span></div>
-                <div class="hud-item">Lives: <span id="lives">3</span></div>
             </div>
             <canvas id="game-canvas"></canvas>
             <div id="touch-controls">
